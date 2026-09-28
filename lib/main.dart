@@ -48,6 +48,12 @@ class _TelaContadorState extends State<TelaContador> {
     }
   }
 
+  void _zerarContador() {
+    setState(() {
+      _quantidade = 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,6 +97,11 @@ class _TelaContadorState extends State<TelaContador> {
                     icon: const Icon(Icons.add),
                   ),
                 ],
+              ),
+              const SizedBox(height: 16),
+              OutlinedButton(
+                onPressed: _zerarContador,
+                child: const Text('Zerar Contador'),
               ),
               const SizedBox(height: 40),
               ElevatedButton(
