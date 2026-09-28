@@ -17,6 +17,7 @@ class MeuApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        fontFamily: 'Roboto',
       ),
       home: const TelaContador(),
     );
