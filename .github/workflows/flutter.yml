@@ -75,6 +75,9 @@ jobs:
       - name: Build web app
         run: flutter build web
 
+      - name: Build Android app
+        run: flutter build apk --debug
+
       - name: Save visual evidence on the branch
         if: github.event_name == 'push'
         run: |
