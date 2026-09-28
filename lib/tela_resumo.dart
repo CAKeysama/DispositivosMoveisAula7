@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 class TelaResumo extends StatelessWidget {
   final String item;
   final int quantidade;
+  final double valorTotal;
 
   const TelaResumo({
     super.key,
     required this.item,
     required this.quantidade,
+    required this.valorTotal,
   });
+
+  String _formatarMoeda(double valor) {
+    return 'R\$ ${valor.toStringAsFixed(2).replaceAll('.', ',')}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +43,14 @@ class TelaResumo extends StatelessWidget {
               Text(
                 'Quantidade Selecionada: $quantidade',
                 style: const TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Valor Total: ${_formatarMoeda(valorTotal)}',
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 32),
               ElevatedButton.icon(
