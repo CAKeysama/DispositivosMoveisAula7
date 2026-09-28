@@ -15,8 +15,21 @@ Future<void> _carregarFontes() async {
     ..addFont(_lerFonte('assets/fonts/Roboto.ttf'));
   await roboto.load();
 
+  final flutterRoot = Platform.environment['FLUTTER_ROOT'];
+  if (flutterRoot == null) {
+    throw StateError('A variável FLUTTER_ROOT não está definida.');
+  }
+
+  final materialIconsPath = [
+    flutterRoot,
+    'bin',
+    'cache',
+    'artifacts',
+    'material_fonts',
+    'MaterialIcons-Regular.otf',
+  ].join(Platform.pathSeparator);
   final materialIcons = FontLoader('MaterialIcons')
-    ..addFont(_lerFonte('tool/fonts/MaterialIcons-Regular.ttf'));
+    ..addFont(_lerFonte(materialIconsPath));
   await materialIcons.load();
 }
 
