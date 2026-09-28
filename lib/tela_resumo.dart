@@ -55,7 +55,15 @@ class TelaResumo extends StatelessWidget {
               const SizedBox(height: 32),
               ElevatedButton.icon(
                 onPressed: () {
-                  // Desempilha a tela atual e retorna à anterior.
+                  // Retorna a confirmação para a TelaContador.
+                  Navigator.pop(context, true);
+                },
+                icon: const Icon(Icons.check),
+                label: const Text('Confirmar Pedido'),
+              ),
+              const SizedBox(height: 12),
+              TextButton.icon(
+                onPressed: () {
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.arrow_back),

@@ -57,6 +57,29 @@ class _TelaContadorState extends State<TelaContador> {
     });
   }
 
+  Future<void> _abrirResumo() async {
+    final pedidoConfirmado = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TelaResumo(
+          item: _nomeProduto,
+          quantidade: _quantidade,
+          valorTotal: _valorTotal,
+        ),
+      ),
+    );
+
+    if (!mounted || pedidoConfirmado != true) {
+      return;
+    }
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        const SnackBar(content: Text('Pedido Confirmado com Sucesso!')),
+      );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,19 +131,7 @@ class _TelaContadorState extends State<TelaContador> {
               ),
               const SizedBox(height: 40),
               ElevatedButton(
-                onPressed: () {
-                  // Empilha a TelaResumo passando os dados do estado.
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TelaResumo(
-                        item: _nomeProduto,
-                        quantidade: _quantidade,
-                        valorTotal: _valorTotal,
-                      ),
-                    ),
-                  );
-                },
+                onPressed: _abrirResumo,
                 child: const Text('Avançar para Resumo'),
               ),
             ],
