@@ -29,7 +29,18 @@ jobs:
         run: flutter pub get
 
       - name: Analyze source code
-        run: flutter analyze
+        run: |
+          set +e
+          output=$(flutter analyze 2>&1)
+          status=$?
+          printf '%s\n' "$output"
+          {
+            echo '### Resultado de `flutter analyze`'
+            echo '```text'
+            printf '%s\n' "$output"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
 
       - name: Run widget tests
         run: flutter test
