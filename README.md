@@ -60,6 +60,14 @@ flutter run -d ID_DO_DISPOSITIVO
 
 As instruções detalhadas e as imagens geradas pelo teste visual ficam em [`docs/evidencias`](docs/evidencias). O workflow **Flutter CI** também disponibiliza as imagens no artefato `evidencias-telas`.
 
+### TelaContador após alteração da quantidade
+
+![TelaContador mostrando a quantidade 3](docs/evidencias/tela_contador.png)
+
+### TelaResumo com os dados recebidos
+
+![TelaResumo mostrando produto, quantidade e valor total](docs/evidencias/tela_resumo.png)
+
 Para gerar novamente as evidências em um ambiente com Flutter:
 
 ```bash
