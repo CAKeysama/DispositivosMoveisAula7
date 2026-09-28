@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:dispositivos_moveis_aula7/main.dart';
 import 'package:flutter/material.dart';
