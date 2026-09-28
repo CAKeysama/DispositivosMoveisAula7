@@ -12,19 +12,21 @@ Future<ByteData> _lerFonte(String caminho) async {
 
 Future<void> _carregarFontes() async {
   final roboto = FontLoader('Roboto')
-    ..addFont(rootBundle.load('assets/fonts/Roboto.ttf'));
+    ..addFont(_lerFonte('assets/fonts/Roboto.ttf'));
+  await roboto.load();
+
   final materialIcons = FontLoader('MaterialIcons')
     ..addFont(_lerFonte('tool/fonts/MaterialIcons-Regular.ttf'));
-
-  await Future.wait([
-    roboto.load(),
-    materialIcons.load(),
-  ]);
+  await materialIcons.load();
 }
 
 void main() {
-  testWidgets('gera evidências da TelaContador e da TelaResumo', (tester) async {
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
     await _carregarFontes();
+  });
+
+  testWidgets('gera evidências da TelaContador e da TelaResumo', (tester) async {
     await tester.binding.setSurfaceSize(const Size(390, 844));
     addTearDown(() => tester.binding.setSurfaceSize(null));
 
